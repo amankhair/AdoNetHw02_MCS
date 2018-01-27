@@ -1,0 +1,70 @@
+﻿<Page x:Class="AdoNetHw02.EquipmentTable"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AdoNetHw02"
+      mc:Ignorable="d" 
+      d:DesignHeight="400" d:DesignWidth="600"
+      Title="EquipmentTable">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="180"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+
+        <Grid Grid.Row="0">
+            <ListView x:Name="EquipmentList" Margin="10,10,10,2" >
+                <ListView.View>
+                    <GridView>
+                        <GridView.Columns>
+                            <GridViewColumn Header="intEquipmentID" DisplayMemberBinding="{Binding Path=intEquipmentID}"/>
+                            <GridViewColumn Header="intGarageRoom" DisplayMemberBinding="{Binding Path=intGarageRoom}" />
+                            <GridViewColumn Header="intManId" DisplayMemberBinding="{Binding Path=intManufacturerID}" />
+                            <GridViewColumn Header="intModelId" DisplayMemberBinding="{Binding Path=intModelID}" />
+                            <GridViewColumn Header="strManYear" DisplayMemberBinding="{Binding Path=strManufYear}" />
+                            <GridViewColumn Header="strSerNo" DisplayMemberBinding="{Binding Path=strSerialNo}" />
+                        </GridView.Columns>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+
+        <Grid Grid.Row="1" x:Name="FormGrid" DataContext="{Binding ElementName=EquipmentList, Path=SelectedItem}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" Margin="15,0" Content="intGarageRoom:" FontSize="13" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="GarageRoomBox" Grid.Row="0" Grid.Column="1" Height="25" FontSize="13" Margin="15,2" VerticalContentAlignment="Center" Text="{Binding Path=intGarageRoom}"/>
+
+            <Label Grid.Row="1" Grid.Column="0" Margin="15,0" Content="intManufacturerID:" FontSize="13" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="ManIdBox" Grid.Row="1" Grid.Column="1" Height="25" FontSize="13" Margin="15,2" VerticalContentAlignment="Center" Text="{Binding Path=intManufacturerID}"/>
+
+            <Label Grid.Row="2" Grid.Column="0" Margin="15,0" Content="intModelID:" FontSize="13" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="ModelIdBox" Grid.Row="2" Grid.Column="1" Height="25" FontSize="13" Margin="15,2" VerticalContentAlignment="Center" Text="{Binding Path=intModelID}"/>
+
+            <Label Grid.Row="3" Grid.Column="0" Margin="15,0" Content="strManufYear:" FontSize="13" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="ManufYearBox" Grid.Row="3" Grid.Column="1" Height="25" FontSize="13" Margin="15,2" VerticalContentAlignment="Center" Text="{Binding Path=strManufYear}"/>
+
+            <Label Grid.Row="4" Grid.Column="0" Margin="15,0" Content="strSerialNo:" FontSize="13" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="SerialNoBox" Grid.Row="4" Grid.Column="1" Height="25" FontSize="13" Margin="15,2" VerticalContentAlignment="Center" Text="{Binding Path=strSerialNo}"/>
+
+            <TextBox x:Name="EqIdBox" Grid.Row="5" Grid.Column="1" Margin="15,2" Text="{Binding Path=intEquipmentID}" Visibility="Hidden"></TextBox>
+            <Button x:Name="SaveBtn" Grid.Row="6" Grid.Column="1" Height="25" Width="120" Click="SaveBtn_OnClick">Сохранить</Button>
+        </Grid>
+    </Grid>
+</Page>

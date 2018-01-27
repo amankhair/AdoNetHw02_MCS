@@ -1,0 +1,57 @@
+﻿<Page x:Class="AdoNetHw02.TrackMeterTable"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AdoNetHw02"
+      mc:Ignorable="d" 
+      d:DesignHeight="400" d:DesignWidth="600"
+      Title="TrackMeterTable">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Margin="15">
+            <ListView x:Name="TrackMeterList">
+                <ListView.View>
+                    <GridView>
+                        <GridView.Columns>
+                            <GridViewColumn Header="intEquipmentID" DisplayMemberBinding="{Binding Path=intEquipmentID}" />
+                            <GridViewColumn Header="dMeterDate" DisplayMemberBinding="{Binding Path=dMeterDate}"/>
+                            <GridViewColumn Header="intMeterReading" DisplayMemberBinding="{Binding Path=intMeterReading}" />
+                            <GridViewColumn Header="intHoursHoursOperation" DisplayMemberBinding="{Binding Path=intHoursHoursOperation}" />
+                        </GridView.Columns>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+
+        <Grid Grid.Row="1" Margin="15" DataContext="{Binding ElementName=TrackMeterList, Path=SelectedItem}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <WrapPanel Grid.Row="0" Grid.Column="1">
+                <Label Content="C (ММ-ДД-ГГ):"  VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" />
+                <TextBox x:Name="DateBox1" Margin="5" Width="120" Height="25" VerticalContentAlignment="Center" HorizontalAlignment="Left"/>
+            </WrapPanel>
+
+            <WrapPanel Grid.Row="1" Grid.Column="1">
+                <Label Content="По (ММ-ДД-ГГ):" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"/>
+                <TextBox x:Name="DateBox2" Margin="55,0,0,0" Width="120" Height="25" VerticalContentAlignment="Center" HorizontalAlignment="Left"/>
+            </WrapPanel>
+
+            <Button Grid.Row="2" Grid.Column="1" x:Name="dTrackMeterBtn" Width="150" Height="25" Click="DTrackMeterBtn_OnClick">Фильтрация dTrackMeter</Button>
+        </Grid>
+    </Grid>
+</Page>
